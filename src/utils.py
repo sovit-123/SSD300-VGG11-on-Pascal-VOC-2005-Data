@@ -11,7 +11,6 @@ voc_labels = ('bicycle', 'car', 'motorbike', 'person')
 # we do not use 0 as a `voc_label` as we reserve that for
 # the background label
 label_map = {k: v + 1 for v, k in enumerate(voc_labels)}
-print(label_map)
 label_map['background'] = 0
 # reverse label map
 rev_label_map = {v: k for k, v in label_map.items()} 

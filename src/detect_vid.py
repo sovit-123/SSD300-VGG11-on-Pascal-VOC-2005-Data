@@ -1,6 +1,7 @@
 from torchvision import transforms
 from utils import rev_label_map, label_color_map
 from PIL import Image, ImageDraw, ImageFont
+from datetime import datetime
 
 import argparse
 import cv2
@@ -177,4 +178,4 @@ if __name__ == '__main__':
     cv2.destroyAllWindows()
 
     with open(file='../logs/log.txt', mode='a+') as f:
-        f.writelines(f"{args['checkpoint']}, \t {args['input']}, \t {avg_fps:.2f}FPS \n")
+        f.writelines(f"\nNEW RUN({datetime.now()}):, \t {args['checkpoint']}, \t Trained Epochs: {start_epoch}, \t {args['input']}, \t {avg_fps:.2f}FPS \n")

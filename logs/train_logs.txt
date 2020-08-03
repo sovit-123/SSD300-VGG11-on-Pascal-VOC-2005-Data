@@ -1,0 +1,38 @@
+##### ----- ##### ----- ##### 
+
+NEW RUN: (2020-08-03 22:54:51.166893), 
+##### ----- ##### ----- ##### 
+
+NEW RUN: (2020-08-03 22:55:48.443404), 
+Training for 18000 iterations...
+Training for 156 epochs...
+Batch size is 16
+Logging every 20 batches...
+DECAYING learning rate.
+ The new LR is (1.0000000000000002e-06,)
+
+Epoch: [139][0/116]	Batch Time 13.035 (13.035)	Data Time 6.560 (6.560)	Loss 1.8789 (1.8789)	##### ----- ##### ----- ##### 
+
+NEW RUN: (2020-08-03 22:56:18.334893), 
+Training for 18000 iterations...
+Training for 156 epochs...
+Batch size is 16
+Logging every 20 batches...
+DECAYING learning rate.
+ The new LR is (1.0000000000000002e-06,)
+
+Epoch: [139][0/116]	Batch Time 12.185 (12.185)	Data Time 5.627 (5.627)	Loss 1.5891 (1.5891)	
+Epoch: [139][20/116]	Batch Time 0.543 (1.085)	Data Time 0.000 (0.270)	Loss 1.8258 (1.5106)	
+Epoch: [139][40/116]	Batch Time 0.885 (0.853)	Data Time 0.351 (0.178)	Loss 1.9326 (1.4991)	
+Epoch: [139][60/116]	Batch Time 1.143 (0.811)	Data Time 0.582 (0.183)	Loss 1.1389 (1.5123)	
+Epoch: [139][80/116]	Batch Time 0.536 (0.768)	Data Time 0.001 (0.161)	Loss 1.5541 (1.5278)	
+Epoch: [139][100/116]	Batch Time 0.527 (0.743)	Data Time 0.000 (0.150)	Loss 1.4449 (1.5182)	
+Epoch: [140][0/116]	Batch Time 6.768 (6.768)	Data Time 6.219 (6.219)	Loss 1.2670 (1.2670)	
+Epoch: [140][20/116]	Batch Time 0.913 (0.902)	Data Time 0.376 (0.363)	Loss 1.2894 (1.3817)	
+Epoch: [140][40/116]	Batch Time 0.537 (0.758)	Data Time 0.001 (0.219)	Loss 0.7810 (1.4411)	
+Epoch: [140][60/116]	Batch Time 0.544 (0.736)	Data Time 0.001 (0.196)	Loss 2.0988 (1.4480)	
+Epoch: [140][80/116]	Batch Time 0.553 (0.730)	Data Time 0.001 (0.189)	Loss 1.7672 (1.4646)	
+Epoch: [140][100/116]	Batch Time 0.554 (0.731)	Data Time 0.001 (0.190)	Loss 1.3188 (1.4592)	
+Epoch: [141][0/116]	Batch Time 7.443 (7.443)	Data Time 6.878 (6.878)	Loss 1.5923 (1.5923)	
+Epoch: [141][20/116]	Batch Time 0.546 (1.022)	Data Time 0.001 (0.474)	Loss 1.2369 (1.4175)	
+Epoch: [141][40/116]	Batch Time 0.545 (0.862)	Data Time 0.000 (0.313)	Loss 1.3570 (1.4537)	

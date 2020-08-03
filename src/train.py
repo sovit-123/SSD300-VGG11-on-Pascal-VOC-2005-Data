@@ -8,10 +8,14 @@ from model import SSD300, MultiBoxLoss
 from datasets import PascalVOCDataset
 from utils import label_map, adjust_learning_rate, save_checkpoint
 from utils import AverageMeter, clip_gradient
+from datetime import datetime
 
 # construct the argument parser and parse the command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', help='path to input data folder')
+parser.add_argument('-t', '--continue-training', dest='continue_training', 
+                        required=True, choices=['yes', 'no'],
+                        help='whether to continue training or not')
 args = vars(parser.parse_args())
 
 # data parameters
@@ -22,13 +26,17 @@ n_classes = len(label_map)  # number of different types of objects
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # learning parameters
-checkpoint = None  # path to model checkpoint if you want to resume training, None if none
+if args['continue_training'] == 'yes': # continue training or not
+    checkpoint = '../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar'
+else:
+    print('Training from beginning')
+    checkpoint = None
 batch_size = 16  # batch size
-iterations = 1000  # number of iterations to train
+iterations = 18000  # number of iterations to train
 workers = 4  # number of workers for loading data in the DataLoader
 print_freq = 20  # print training status every __ batches
 lr = 1e-3  # learning rate
-decay_lr_at = [80000, 100000]  # decay learning rate after these many iterations
+decay_lr_at = [13000, 14800, 16000]  # decay learning rate after these many iterations
 decay_lr_to = 0.1  # decay learning rate to this fraction of the existing learning rate
 momentum = 0.9  # momentum
 weight_decay = 5e-4  # weight decay
@@ -81,13 +89,17 @@ def main():
     # ...learning rate at (i.e. convert iterations to epochs)
     # to convert iterations to epochs,...
     # ...divide iterations by the number of iterations per epoch
-    # the paper trains for 120,000 iterations with a batch size of 32,...
-    # ...decays after 80,000 and 100,000 iterations
     epochs = iterations // (len(train_dataset) // batch_size)
     decay_lr_at = [it // (len(train_dataset) // batch_size) for it in decay_lr_at]
     print(f"Training for {iterations} iterations...")
     print(f"Training for {epochs} epochs...")
+    print(f"Batch size is {batch_size}")
     print(f"Logging every {print_freq} batches...")
+    with open(file='../logs/train_logs.txt', mode='a+') as f:
+        f.writelines(f"Training for {iterations} iterations...\n")
+        f.writelines(f"Training for {epochs} epochs...\n")
+        f.writelines(f"Batch size is {batch_size}\n")
+        f.writelines(f"Logging every {print_freq} batches...\n")
 
     # epochs
     for epoch in range(start_epoch, epochs):
@@ -95,6 +107,8 @@ def main():
         # decay learning rate at particular epochs
         if epoch in decay_lr_at:
             adjust_learning_rate(optimizer, decay_lr_to)
+            with open(file='../logs/train_logs.txt', mode='a+') as f:
+                f.writelines(f"DECAYING learning rate.\n The new LR is {(optimizer.param_groups[1]['lr'],)}\n")
 
         # one epoch's training
         train(train_loader=train_loader,
@@ -164,8 +178,19 @@ def train(train_loader, model, criterion, optimizer, epoch):
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(epoch, i, len(train_loader),
                                                                   batch_time=batch_time,
                                                                   data_time=data_time, loss=losses))
+            with open(file='../logs/train_logs.txt', mode='a+') as f:
+                f.writelines('\nEpoch: [{0}][{1}/{2}]\t'
+                  'Batch Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
+                  'Data Time {data_time.val:.3f} ({data_time.avg:.3f})\t'
+                  'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(epoch, i, len(train_loader),
+                                                                  batch_time=batch_time,
+                                                                  data_time=data_time, loss=losses))
     del predicted_locs, predicted_scores, images, boxes, labels  # free some memory since their histories may be stored
 
 
 if __name__ == '__main__':
+    with open(file='../logs/train_logs.txt', mode='a+') as f:
+        f.writelines(f"##### ----- ##### ----- ##### \n\n")
+        f.writelines(f"NEW RUN: ({datetime.now()}), \n")
+    print(f"Training on labels: {label_map}\n")
     main()
