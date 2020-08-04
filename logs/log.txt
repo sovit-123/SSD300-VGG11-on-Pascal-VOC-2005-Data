@@ -1,0 +1,8 @@
+
+NEW RUN(2020-08-04 09:28:14.702556):, 	 ../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar, 	 Trained Epochs: 156, 	 ../../input/test_data/gta.mp4, 	 28.41FPS 
+
+NEW RUN(2020-08-04 09:31:48.024050):, 	 ../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar, 	 Trained Epochs: 156, 	 ../../input/test_data/video1.mp4, 	 26.64FPS 
+
+NEW RUN(2020-08-04 09:33:48.155829):, 	 ../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar, 	 Trained Epochs: 156, 	 ../../input/test_data/video7.mp4, 	 36.10FPS 
+
+NEW RUN(2020-08-04 09:34:14.183196):, 	 ../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar, 	 Trained Epochs: 156, 	 ../../input/test_data/video5.mp4, 	 25.55FPS 
