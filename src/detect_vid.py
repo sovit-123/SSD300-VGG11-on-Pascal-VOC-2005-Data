@@ -97,9 +97,15 @@ def detect(original_image, min_score, max_overlap, top_k, suppress=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input', default='../../input/test_data/video1.mp4', help='path to video')
-    parser.add_argument('-c', '--checkpoint', default='../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar', 
+    parser.add_argument('-i', '--input', 
+                        default='../../input/test_data/video1.mp4', 
+                        help='path to video')
+    parser.add_argument('-c', '--checkpoint', 
+                        default='../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar', 
                         help='path to the trained model checkpoint')
+    parser.add_argument('-r', '--resize', 
+                        default='yes',
+                        help='resize to smaller frames if width greater than 800')
     args = vars(parser.parse_args())
 
     # load model checkpoint
@@ -126,9 +132,10 @@ if __name__ == '__main__':
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
 
-    if frame_width > 800:
-        frame_width = 640
-        frame_height = 400
+    if args['resize'] == 'yes':
+        if frame_width > 800:
+            frame_width = 640
+            frame_height = 400
 
     # define codec and create VideoWriter object
     write_path = args['input'].split('/')[-1]
@@ -178,4 +185,15 @@ if __name__ == '__main__':
     cv2.destroyAllWindows()
 
     with open(file='../logs/log.txt', mode='a+') as f:
-        f.writelines(f"\nNEW RUN({datetime.now()}):, \t {args['checkpoint']}, \t Trained Epochs: {start_epoch}, \t {args['input']}, \t {avg_fps:.2f}FPS \n")
+        # f.writelines(f"\nNEW RUN({datetime.now()}):, \t \
+        #              {args['checkpoint']}, \t \
+        #              Trained Epochs: {start_epoch}, \t \
+        #              {args['input']}, \t \
+        #              Resize: {args['resize']}, \t \
+        #              {avg_fps:.2f}FPS \n")
+        f.write(f"\nNEW RUN({datetime.now()}):, \t")
+        f.write(f"{args['checkpoint']}, \t")
+        f.write(f"Trained Epochs: {start_epoch}, \t")
+        f.write(f"{args['input']}, \t")
+        f.write(f"Resize: {args['resize']}, \t")
+        f.write(f"{avg_fps:.2f}FPS, \n")
