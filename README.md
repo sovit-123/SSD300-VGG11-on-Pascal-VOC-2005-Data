@@ -14,10 +14,10 @@
 
 * [Introduction](#Introduction)
 
-* [Project Directory Structure](#Project Directory Structure)
-* [PyTorch Version](#PyTorch Version)
-* [How to Run?](#How to Run?)
-* [Get Access to Pretrained Model](#Get Access to Pretrained Model)
+* [Project Directory Structure](#Project-Directory-Structure)
+* [PyTorch Version](#PyTorch-Version)
+* [How to Run?](#How-to-Run?)
+* [Get Access to Pretrained Model](#Get-Access-to-Pretrained-Model)
 * [Results](#Results)
 
 
