@@ -12,19 +12,26 @@
 
 ## <u>Table of Contents</u>
 
-* Introduction.
+* **[Introduction](#Introduction).**
 
-* Project Directory Structure.
-* PyTorch Version.
-* How to Run?
-* Get Access to Pretrained Model.
-* Results.
+* **[Project Directory Structure.](#Project Directory Structure)**
+* **[PyTorch Version.](#PyTorch Version)**
+* **[How to Run?](#How to Run?)**
+* **[Get Access to Pretrained Model.](#Get Access to Pretrained Model)**
+* **[Results](#Results).**
 
 
 
 ## <u>Introduction</u>
 
+***This project trains a SSD300 with VGG11 base on the [PASCAL VOC 2005](http://host.robots.ox.ac.uk/pascal/VOC/voc2005/index.html) dataset using the PyTorch deep learning framework.*** 
 
+The VOC 2005 dataset mainly contains 4 classes for detection purposes. They are:
+
+* Bicycle.
+* Car.
+* Motorbike.
+* Person.
 
 
 
@@ -103,7 +110,12 @@ Follow the below given structure while cloning this repo or setting up the proje
 
 ## <u>Results</u>
 
-![]()
+![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/fire_fighter.jpg?raw=true)
 
 
 
+![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/motor_bike1.jpg?raw=true)
+
+![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/motor_bike3.png?raw=true)
+
+![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/cars1.jpg?raw=true)
