@@ -127,3 +127,10 @@ Follow the below given structure while cloning this repo or setting up the proje
 ![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/motor_bike3.png?raw=true)
 
 ![](https://github.com/sovit-123/SSD300-VGG11-on-Pascal-VOC-2005-Data/blob/master/outputs/cars1.jpg?raw=true)
+
+
+
+## <u>References</u>
+
+* [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325).
+* [a-PyTorch-Tutorial-to-Object-Detection](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Object-Detection).
