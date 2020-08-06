@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # input data, models, and files
-outputs/
+outputs/*.mp4
 backup/
 model_checkpoints/
 commands.txt
