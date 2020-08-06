@@ -191,6 +191,8 @@ if __name__ == '__main__':
         #              {args['input']}, \t \
         #              Resize: {args['resize']}, \t \
         #              {avg_fps:.2f}FPS \n")
+
+        # logging into log.txt
         f.write(f"\nNEW RUN({datetime.now()}):, \t")
         f.write(f"{args['checkpoint']}, \t")
         f.write(f"Trained Epochs: {start_epoch}, \t")

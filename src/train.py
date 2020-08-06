@@ -34,13 +34,15 @@ else:
 batch_size = 16  # batch size
 iterations = 18000  # number of iterations to train
 workers = 4  # number of workers for loading data in the DataLoader
-print_freq = 20  # print training status every __ batches
+print_freq = 20  # print training status every these many batches
 lr = 1e-3  # learning rate
 decay_lr_at = [13000, 14800, 16000]  # decay learning rate after these many iterations
 decay_lr_to = 0.1  # decay learning rate to this fraction of the existing learning rate
 momentum = 0.9  # momentum
 weight_decay = 5e-4  # weight decay
-grad_clip = None  # clip if gradients are exploding, which may happen at larger batch sizes (sometimes at 32) - you will recognize it by a sorting error in the MuliBox loss calculation
+# clip gradients if they are exploding...
+# ... may happen at larger batch sizes (sometimes at 32)
+grad_clip = None  
 
 cudnn.benchmark = True
 
@@ -95,6 +97,8 @@ def main():
     print(f"Training for {epochs} epochs...")
     print(f"Batch size is {batch_size}")
     print(f"Logging every {print_freq} batches...")
+
+    # logging into train.txt
     with open(file='../logs/train_logs.txt', mode='a+') as f:
         f.writelines(f"Training for {iterations} iterations...\n")
         f.writelines(f"Training for {epochs} epochs...\n")
@@ -107,6 +111,8 @@ def main():
         # decay learning rate at particular epochs
         if epoch in decay_lr_at:
             adjust_learning_rate(optimizer, decay_lr_to)
+
+            # logging into train.txt
             with open(file='../logs/train_logs.txt', mode='a+') as f:
                 f.writelines(f"DECAYING learning rate.\n The new LR is {(optimizer.param_groups[1]['lr'],)}\n")
 
@@ -178,6 +184,8 @@ def train(train_loader, model, criterion, optimizer, epoch):
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(epoch, i, len(train_loader),
                                                                   batch_time=batch_time,
                                                                   data_time=data_time, loss=losses))
+            
+            # logging into train.txt
             with open(file='../logs/train_logs.txt', mode='a+') as f:
                 f.writelines('\nEpoch: [{0}][{1}/{2}]\t'
                   'Batch Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
@@ -185,10 +193,12 @@ def train(train_loader, model, criterion, optimizer, epoch):
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(epoch, i, len(train_loader),
                                                                   batch_time=batch_time,
                                                                   data_time=data_time, loss=losses))
-    del predicted_locs, predicted_scores, images, boxes, labels  # free some memory since their histories may be stored
+    # free some memory since their histories may be stored
+    del predicted_locs, predicted_scores, images, boxes, labels  
 
 
 if __name__ == '__main__':
+    # creating new run line for the current training iterataions
     with open(file='../logs/train_logs.txt', mode='a+') as f:
         f.writelines(f"##### ----- ##### ----- ##### \n\n")
         f.writelines(f"NEW RUN: ({datetime.now()}), \n")

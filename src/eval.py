@@ -12,7 +12,7 @@ warnings.filterwarnings('ignore')
 pp = PrettyPrinter()
 
 # parameters
-data_folder = '../../input/voc_2005/'
+data_folder = '../input'
 batch_size = 32
 workers = 4
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -29,8 +29,10 @@ model.eval()
 # load test data
 test_dataset = PascalVOCDataset(data_folder,
                                 split='test')
-test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False,
-                                          collate_fn=test_dataset.collate_fn, num_workers=workers, pin_memory=True)
+test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,
+                                         shuffle=False,
+                                         collate_fn=test_dataset.collate_fn,
+                                         num_workers=workers, pin_memory=True)
 
 
 def evaluate(test_loader, model):
@@ -60,8 +62,10 @@ def evaluate(test_loader, model):
             predicted_locs, predicted_scores = model(images)
 
             # detect objects in SSD output
-            det_boxes_batch, det_labels_batch, det_scores_batch = model.detect_objects(predicted_locs, predicted_scores,
-                                                                                       min_score=0.01, max_overlap=0.45,
+            det_boxes_batch, det_labels_batch, det_scores_batch = model.detect_objects(predicted_locs,
+                                                                                       predicted_scores,
+                                                                                       min_score=0.01,
+                                                                                       max_overlap=0.45,
                                                                                        top_k=200)
             # evaluation MUST be at min_score=0.01, max_overlap=0.45, top_k=200...
             # ...for fair comparision with the paper's results and other repos

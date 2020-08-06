@@ -1,8 +1,3 @@
-"""
-REFERENCE:
-https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Object-Detection/blob/master/model.py
-"""
-
 import torch
 import torchvision
 import torch.nn.functional as F
@@ -23,7 +18,7 @@ class VGGBase(nn.Module):
     def __init__(self):
         super(VGGBase, self).__init__()
 
-        # standard convolutional layers in VGG16
+        # standard convolutional layers in VGG11
         self.conv1_1 = nn.Conv2d(3, 64, kernel_size=3, padding=1)  # stride = 1, by default
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
 
@@ -42,7 +37,7 @@ class VGGBase(nn.Module):
         self.conv5_2 = nn.Conv2d(512, 512, kernel_size=3, padding=1)
         self.pool5 = nn.MaxPool2d(kernel_size=3, stride=1, padding=1)  # retains size because stride is 1 (and padding)
 
-        # replacements for FC6 and FC7 in VGG16
+        # replacements for FC6 and FC7 in VGG1
         self.conv6 = nn.Conv2d(512, 1024, kernel_size=3, padding=6, dilation=6)  # atrous convolution
 
         self.conv7 = nn.Conv2d(1024, 1024, kernel_size=1)
@@ -85,12 +80,12 @@ class VGGBase(nn.Module):
     def load_pretrained_layers(self):
         """
         Using a VGG network that has been pretrained on ImageNet dataset. 
-        Same is in the original paper.
-        There's one available in PyTorch, see:
-        https://pytorch.org/docs/stable/torchvision/models.html#torchvision.models.vgg16
+        The original paper used VGG16, we are using VGG11 to achieve real-time
+        inference on videos.
+        https://pytorch.org/docs/stable/torchvision/models.html#torchvision.models.vgg11
         We copy these parameters into our network. 
         It's straightforward for conv1 to conv5.
-        But, the original VGG-16 does not contain the conv6 and con7 layers.
+        VGG-11 does not contain the conv6 and con7 layers.
         Therefore, we convert fc6 and fc7 into convolutional layers, 
         and subsample by decimation. See 'decimate' in utils.py.
         """
