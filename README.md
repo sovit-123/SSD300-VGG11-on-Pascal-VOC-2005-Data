@@ -75,7 +75,7 @@ Follow the below given structure while cloning this repo or setting up the proje
 
 
 
-## ****<u>How to Run?</u>
+## <u>How to Run?</u>
 
 ***Execute the following commands in the given order.***
 
