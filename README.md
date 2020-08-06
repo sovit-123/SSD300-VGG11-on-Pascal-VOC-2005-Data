@@ -16,7 +16,7 @@
 
 * [Project Directory Structure](#Project-Directory-Structure)
 * [PyTorch Version](#PyTorch-Version)
-* [How to Run?](#How-to-Run?)
+* [Running the Code](#Running-the-Code)
 * [Get Access to Pretrained Model](#Get-Access-to-Pretrained-Model)
 * [Results](#Results)
 
@@ -75,7 +75,7 @@ Follow the below given structure while cloning this repo or setting up the proje
 
 
 
-## <u>How to Run?</u>
+## <u>Running the Code</u>
 
 ***Execute the following commands in the given order.***
 
