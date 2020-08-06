@@ -12,13 +12,13 @@
 
 ## <u>Table of Contents</u>
 
-* **[Introduction](#Introduction)**
+* [Introduction](#Introduction)
 
-* **[Project Directory Structure](#Project-Directory-Structure)**
-* **[PyTorch Version](#PyTorch-Version)**
-* **[How to Run?](#How-to-Run?)**
-* **[Get Access to Pretrained Model](#Get-Access-to-Pretrained-Model)**
-* **[Results](#Results)**
+* [Project Directory Structure](#Project-Directory-Structure)
+* [PyTorch Version](#PyTorch-Version)
+* [How to Run?](#How-to-Run?)
+* [Get Access to Pretrained Model](#Get-Access-to-Pretrained-Model)
+* [Results](#Results)
 
 
 
