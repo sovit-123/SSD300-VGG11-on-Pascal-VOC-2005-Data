@@ -91,7 +91,7 @@ def detect(original_image, min_score, max_overlap, top_k, suppress=None):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', 
-                        default='../input/test_data/horse.jpg',
+                        default='../input/test_data/fire_fighter.jpg',
                         help='path to the test data')
     parser.add_argument('-c', '--checkpoint', 
                         default='../model_checkpoints/checkpoint_ssd300_vgg11.pth.tar', 
