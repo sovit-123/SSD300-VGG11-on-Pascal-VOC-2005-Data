@@ -35,6 +35,14 @@ The VOC 2005 dataset mainly contains 4 classes for detection purposes. They are:
 
 
 
+*This is mainly intended for beginners in deep learning who are trying to get their hands on object detection and do not want to work on very huge datasets.*
+
+
+
+***Feel free to clone, download, change, distribute, and use the code any way you want.***
+
+
+
 ## <u>Project Directory Structure</u>
 
 Follow the below given structure while cloning this repo or setting up the project and you should be good to go,
