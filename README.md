@@ -13,12 +13,12 @@
 ## <u>Table of Contents</u>
 
 * [Introduction](#Introduction)
-
 * [Project Directory Structure](#Project-Directory-Structure)
 * [PyTorch Version](#PyTorch-Version)
 * [Running the Code](#Running-the-Code)
 * [Get Access to Pretrained Model](#Get-Access-to-Pretrained-Model)
 * [Results](#Results)
+* [Reference](#References)
 
 
 
